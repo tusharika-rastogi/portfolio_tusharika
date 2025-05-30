@@ -472,17 +472,6 @@ section {
   }
 }
 
-@media (max-width: 768px) {
-  .about .content p {
-    font-size: 15px;
-    line-height: 1.8;
-    padding: 0 25px;
-  }
-
-  .about .content {
-    padding: 20px 10px;
-  }
-}
 
 
 
@@ -500,7 +489,7 @@ section {
 }
 .resume .resume-item {
   padding: 0 0 20px 20px;
-  margin-top: 0;
+  margin-top: -2px;
   border-left: 2px solid #d3782e;
   position: relative;
 }
@@ -538,7 +527,7 @@ section {
   height: 16px;
   border-radius: 50px;
   left: -9px;
-  top: 6;
+  top: 0;
   background: #fff;
   border: 2px solid #d3782e;
 }
