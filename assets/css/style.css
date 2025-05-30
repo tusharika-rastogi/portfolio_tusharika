@@ -472,6 +472,19 @@ section {
   }
 }
 
+@media (max-width: 768px) {
+  .about .content p {
+    font-size: 15px;
+    line-height: 1.8;
+    padding: 0 15px;
+  }
+
+  .about .content {
+    padding: 20px 10px;
+  }
+}
+
+
 
 
 /*--------------------------------------------------------------
@@ -487,7 +500,7 @@ section {
 }
 .resume .resume-item {
   padding: 0 0 20px 20px;
-  margin-top: -2px;
+  margin-top: 0;
   border-left: 2px solid #d3782e;
   position: relative;
 }
@@ -513,7 +526,7 @@ section {
 }
 .resume .resume-item ul li {
   padding-bottom: 10px;
-  color: #242627
+  color: #242724
 }
 .resume .resume-item:last-child {
   padding-bottom: 0;
@@ -525,7 +538,7 @@ section {
   height: 16px;
   border-radius: 50px;
   left: -9px;
-  top: 0;
+  top: 6;
   background: #fff;
   border: 2px solid #d3782e;
 }
@@ -929,3 +942,4 @@ section {
   display: inline-block;
   font-size: 8px;
 }
+
