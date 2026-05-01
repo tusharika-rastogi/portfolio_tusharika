@@ -1,387 +1,1924 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tusharika Rastogi, Computational Biologist specializing in cancer genomics, somatic variant calling, RNA-seq, and Nextflow pipelines." />
+  <title>Tusharika Rastogi | Computational Biologist</title>
 
-  <title>Tusharika Rastogi</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
- 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,500,500i,600,600i,700,700i&subset=cyrillic" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230A0A0A'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia%2C serif' font-weight='700' font-size='14' fill='%23E8920A'%3ETR%3C/text%3E%3C/svg%3E" />
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    /* ============================================================
+       VARIABLES — DARK (default)
+    ============================================================ */
+    :root {
+      --bg:               #070707;
+      --surface:          #0E0E0E;
+      --surface-2:        #141414;
+      --accent:           #E8920A;
+      --accent-light:     #F5A623;
+      --accent-dim:       rgba(232, 146, 10, 0.12);
+      --text-1:           #F0EDE8;
+      --text-2:           #8A877F;
+      --text-3:           #4A4845;
+      --border:           #1E1E1C;
+      --border-accent:    rgba(232, 146, 10, 0.25);
+      --nav-bg:           rgba(7, 7, 7, 0.92);
+      --nav-panel-bg:     rgba(7, 7, 7, 0.97);
+      --font-display:     'Playfair Display', Georgia, serif;
+      --font-body:        'DM Sans', system-ui, sans-serif;
+      --nav-h:            72px;
+      --pad-section:      130px;
+      --pad-container:    40px;
+      --max-w:            1200px;
+      --radius:           8px;
+      --ease:             0.3s ease;
+    }
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    /* ============================================================
+       VARIABLES — LIGHT override
+    ============================================================ */
+    [data-theme="light"] {
+      --bg:               #F6F3EE;
+      --surface:          #EDE9E3;
+      --surface-2:        #E5E1DA;
+      --accent:           #B87200;
+      --accent-light:     #C88A00;
+      --accent-dim:       rgba(184, 114, 0, 0.1);
+      --text-1:           #18150E;
+      --text-2:           #5C5850;
+      --text-3:           #9A9490;
+      --border:           #D5D1C8;
+      --border-accent:    rgba(184, 114, 0, 0.3);
+      --nav-bg:           rgba(246, 243, 238, 0.92);
+      --nav-panel-bg:     rgba(246, 243, 238, 0.98);
+    }
 
+    /* ============================================================
+       RESET + BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <!-- =======================================================
-  * Template Name: Lonely - v4.7.0
-  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-lonely/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-1);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; font-family: inherit; }
+
+    section[id] { scroll-margin-top: var(--nav-h); }
+
+    /* ============================================================
+       GRAIN OVERLAY
+    ============================================================ */
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.038;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 220px 220px;
+    }
+
+    /* ============================================================
+       AMBIENT PAGE HUE
+    ============================================================ */
+    .page-hue {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    [data-theme="light"] .page-hue::before {
+      background: radial-gradient(circle, rgba(232, 146, 10, 0.18) 0%, transparent 60%);
+    }
+    [data-theme="light"] .page-hue::after {
+      background: radial-gradient(circle, rgba(232, 146, 10, 0.12) 0%, transparent 65%);
+    }
+    .page-hue::before {
+      content: '';
+      position: absolute;
+      width: 900px; height: 900px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 146, 10, 0.07) 0%, transparent 60%);
+      top: -260px; left: -220px;
+      animation: hue-drift-a 28s ease-in-out infinite alternate;
+    }
+    .page-hue::after {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 146, 10, 0.045) 0%, transparent 65%);
+      bottom: 5vh; right: -180px;
+      animation: hue-drift-b 34s ease-in-out infinite alternate;
+    }
+    @keyframes hue-drift-a {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(60px, 120px) scale(1.15); }
+    }
+    @keyframes hue-drift-b {
+      from { transform: translate(0, 0) scale(1.1); }
+      to   { transform: translate(-80px, -60px) scale(0.9); }
+    }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-container);
+    }
+
+    .section {
+      padding: var(--pad-section) 0;
+      position: relative;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text-1);
+      margin-bottom: 3.5rem;
+    }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal.d1 { transition-delay: 0.1s; }
+    .reveal.d2 { transition-delay: 0.2s; }
+    .reveal.d3 { transition-delay: 0.3s; }
+    .reveal.d4 { transition-delay: 0.4s; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 0.875rem 1.875rem;
+      border-radius: 4px;
+      border: none;
+      text-decoration: none;
+      transition: transform var(--ease), box-shadow var(--ease), background-color var(--ease), border-color var(--ease), color var(--ease);
+    }
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0A0A0A;
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      box-shadow: 0 8px 28px rgba(232,146,10,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-1);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 1000;
+      transition: background-color 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+      border-bottom: 1px solid transparent;
+    }
+    #nav.scrolled {
+      background: var(--nav-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom-color: var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-container);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-1);
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2.25rem;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-2);
+      letter-spacing: 0.02em;
+      position: relative;
+      transition: color var(--ease);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--accent);
+      transition: width var(--ease);
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text-1); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+
+    .theme-toggle {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: border-color var(--ease), color var(--ease), background var(--ease), transform var(--ease);
+    }
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: rotate(18deg) scale(1.08);
+    }
+    .theme-toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .theme-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      white-space: nowrap;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 22px; height: 1.5px;
+      background: var(--text-1);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-mobile-panel {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: var(--nav-panel-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      padding: 2rem var(--pad-container);
+    }
+    .nav-mobile-panel.open { display: block; }
+    .nav-mobile-panel ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+    .nav-mobile-panel a {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-2);
+      transition: color var(--ease);
+    }
+    .nav-mobile-panel a:hover { color: var(--accent); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: var(--nav-h);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,146,10,0.065) 0%, transparent 68%);
+      top: -180px; right: -160px;
+      animation: glow-a 20s ease-in-out infinite alternate;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,146,10,0.04) 0%, transparent 70%);
+      bottom: 60px; left: -80px;
+      animation: glow-b 26s ease-in-out infinite alternate;
+    }
+    @keyframes glow-a {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(-70px,90px) scale(1.25); }
+    }
+    @keyframes glow-b {
+      from { transform: translate(0,0) scale(1.1); }
+      to   { transform: translate(90px,-60px) scale(0.85); }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 860px;
+      padding: 3rem var(--pad-container) 2rem;
+      width: 100%;
+    }
+
+    .hero-photo-wrap {
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.15s forwards;
+    }
+    .hero-photo {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      border: 2px solid var(--border-accent);
+      overflow: hidden;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+      color: var(--text-1);
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.45s forwards;
+    }
+
+    .hero-title {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      font-weight: 400;
+      color: var(--text-2);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.55s forwards;
+    }
+
+    .hero-descriptor {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--text-1);
+      max-width: 680px;
+      margin: 0 auto 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.65s forwards;
+    }
+    .hero-descriptor strong {
+      font-style: normal;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.8s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    #about { border-top: 1px solid var(--border); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.9fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .about-left {
+      position: sticky;
+      top: calc(var(--nav-h) + 2.5rem);
+    }
+
+    .about-pull-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      font-style: italic;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text-1);
+      margin-bottom: 2rem;
+    }
+    .about-pull-quote em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .about-rule {
+      width: 44px; height: 2px;
+      background: var(--accent);
+    }
+
+    .about-right p {
+      font-size: 1.025rem;
+      line-height: 1.85;
+      color: var(--text-2);
+      margin-bottom: 1.4rem;
+    }
+    .about-right p:last-child { margin-bottom: 0; }
+    .about-right strong { color: var(--text-1); font-weight: 600; }
+
+    /* ============================================================
+       SKILLS
+    ============================================================ */
+    #skills { border-top: 1px solid var(--border); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-cat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: border-color var(--ease);
+    }
+    .skill-cat:hover { border-color: var(--border-accent); }
+
+    .skill-cat-name {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill-tag {
+      font-size: 0.8rem;
+      color: var(--text-1);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.85rem;
+      border-radius: 3px;
+      transition: color var(--ease), border-color var(--ease), background var(--ease);
+    }
+    .skill-tag:hover {
+      color: var(--text-1);
+      border-color: var(--border-accent);
+      background: var(--accent-dim);
+    }
+
+    /* ============================================================
+       RESUME — expandable case cards
+    ============================================================ */
+    #resume {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .resume-group-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 1.25rem;
+      margin-top: 3rem;
+    }
+    .resume-group-title:first-of-type { margin-top: 0; }
+
+    .resume-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      border: 1px solid var(--border-accent);
+      padding: 0.55rem 1.1rem;
+      border-radius: 4px;
+      margin-bottom: 3rem;
+      transition: background var(--ease), transform var(--ease);
+    }
+    .resume-download:hover {
+      background: var(--accent-dim);
+      transform: translateY(-1px);
+    }
+
+    .case-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .case-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color var(--ease);
+    }
+    .case-card:hover { border-color: var(--border-accent); }
+
+    .case-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 2.5rem;
+      cursor: pointer;
+      user-select: none;
+      gap: 2rem;
+    }
+
+    .case-card-left { flex: 1; min-width: 0; }
+
+    .case-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+    .case-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 0.25rem 0.7rem;
+      border-radius: 2px;
+    }
+    .case-platform {
+      font-size: 0.78rem;
+      color: var(--text-3);
+    }
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      font-weight: 700;
+      color: var(--text-1);
+    }
+
+    .case-card-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .case-stat { text-align: right; }
+    .case-stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .case-stat-label {
+      font-size: 0.73rem;
+      color: var(--text-3);
+      margin-top: 0.3rem;
+      white-space: nowrap;
+    }
+
+    .case-toggle {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color var(--ease), background var(--ease);
+    }
+    .case-card:hover .case-toggle { border-color: var(--accent); }
+    .case-toggle svg { transition: transform var(--ease); }
+    .case-card.open .case-toggle svg { transform: rotate(45deg); }
+
+    .case-body {
+      display: none;
+      padding: 0 2.5rem 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .case-card.open .case-body { display: block; }
+
+    .case-body ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1.25rem;
+    }
+    .case-body ul li {
+      font-size: 0.94rem;
+      line-height: 1.75;
+      color: var(--text-2);
+      padding-left: 1.25rem;
+      position: relative;
+      margin-bottom: 0.75rem;
+    }
+    .case-body ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .case-body ul li strong { color: var(--text-1); }
+
+    .case-body-section { margin-top: 1.25rem; }
+    .case-body-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .case-body-section p {
+      font-size: 0.94rem;
+      line-height: 1.75;
+      color: var(--text-2);
+    }
+
+    /* ============================================================
+       PUBLICATIONS
+    ============================================================ */
+    #pubs { border-top: 1px solid var(--border); }
+
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .pub-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 2.5rem;
+      background: var(--surface);
+      transition: border-color var(--ease);
+    }
+    .pub-item:hover { border-color: var(--border-accent); }
+
+    .pub-type {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 0.25rem 0.7rem;
+      border-radius: 2px;
+      display: inline-block;
+      margin-bottom: 0.9rem;
+    }
+
+    .pub-title {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 700;
+      color: var(--text-1);
+      line-height: 1.35;
+      margin-bottom: 0.6rem;
+    }
+
+    .pub-meta {
+      font-size: 0.85rem;
+      color: var(--text-3);
+      line-height: 1.6;
+    }
+    .pub-meta a {
+      color: var(--accent);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--ease);
+    }
+    .pub-meta a:hover { border-bottom-color: var(--accent); }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    #contact { border-top: 1px solid var(--border); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-blurb {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text-2);
+      margin-bottom: 2rem;
+    }
+
+    .contact-email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.925rem;
+      font-weight: 500;
+      color: var(--text-1);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.2rem;
+      transition: color var(--ease), border-color var(--ease);
+    }
+    .contact-email-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .contact-socials {
+      display: flex;
+      gap: 0.875rem;
+      margin-top: 2rem;
+    }
+    .social-icon {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-2);
+      transition: border-color var(--ease), color var(--ease), transform var(--ease);
+    }
+    .social-icon:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .form-group label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .form-group input,
+    .form-group textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-1);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      padding: 0.85rem 1rem;
+      outline: none;
+      resize: none;
+      transition: border-color var(--ease), box-shadow var(--ease);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-3); }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-dim);
+    }
+    .form-group textarea { height: 145px; }
+
+    .form-submit {
+      align-self: flex-start;
+      background: var(--accent);
+      color: #0A0A0A;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 0.875rem 1.875rem;
+      border-radius: 4px;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color var(--ease), transform var(--ease), box-shadow var(--ease);
+    }
+    .form-submit:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px var(--accent-dim);
+    }
+
+    .form-success {
+      display: none;
+      padding: 1.25rem 1.5rem;
+      background: var(--accent-dim);
+      border: 1px solid var(--border-accent);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2.25rem 0;
+    }
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-container);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-1);
+    }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-3);
+    }
+
+    /* ============================================================
+       BACK TO TOP
+    ============================================================ */
+    #backToTop {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 900;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 0.3s ease, transform 0.3s ease, border-color var(--ease), color var(--ease);
+    }
+    #backToTop.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    #backToTop:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      :root {
+        --pad-section: 90px;
+        --pad-container: 28px;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .about-left { position: static; }
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root { --pad-section: 72px; }
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .hero-name { font-size: clamp(2.8rem, 13vw, 4.5rem); }
+      .case-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+        padding: 1.5rem;
+      }
+      .case-card-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .case-stat { text-align: left; }
+      .case-body { padding: 0 1.5rem 1.5rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .hero-ctas .btn { justify-content: center; }
+      .pub-item { padding: 1.5rem; }
+    }
+
+    /* ============================================================
+       PROJECTS
+    ============================================================ */
+    #projects { border-top: 1px solid var(--border); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: border-color var(--ease), transform var(--ease), box-shadow var(--ease);
+    }
+    .project-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.2);
+    }
+
+    .project-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .project-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    .project-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      background: var(--surface-2);
+      flex-shrink: 0;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-1);
+      line-height: 1.2;
+    }
+
+    .project-desc {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--text-2);
+      flex: 1;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .stack-tag {
+      font-size: 0.75rem;
+      color: var(--text-3);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: auto;
+      padding-top: 1rem;
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-2);
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.9rem;
+      border-radius: 4px;
+      transition: color var(--ease), border-color var(--ease), background var(--ease);
+    }
+    .project-link:hover {
+      color: var(--accent);
+      border-color: var(--border-accent);
+      background: var(--accent-dim);
+    }
+    .project-link.link-primary {
+      background: var(--accent);
+      color: #0A0A0A;
+      border-color: var(--accent);
+    }
+    .project-link.link-primary:hover {
+      background: var(--accent-light);
+      color: #0A0A0A;
+    }
+
+    @media (max-width: 600px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
 <body>
 
-  <!-- ======= Hero Section ======= -->
-  <!-- <section id="hero" class="d-flex flex-column align-items-center justify-content-center">
-    <h1>Hi, I'm Tusharika Rastogi!</h1>
-    <h2>Computational Biologist at Michigan Medicine</h2>
-    <a href="#about" class="btn-get-started scrollto"><i class="bi bi-chevron-double-down"></i></a>
-  </section> --> <!-- End Hero -->
+  <!-- Grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
+  <!-- Ambient hue blobs -->
+  <div class="page-hue" aria-hidden="true"></div>
 
-      <div class="logo">
-        <h1><a href="index.html">Tusharika Rastogi</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+  <!-- ======================================================
+       NAVIGATION
+  ====================================================== -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">TR<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about"   data-nav="about">About</a></li>
+        <li><a href="#skills"  data-nav="skills">Skills</a></li>
+        <li><a href="#projects" data-nav="projects">Projects</a></li>
+        <li><a href="#resume"  data-nav="resume">Resume</a></li>
+        <li><a href="#pubs"    data-nav="pubs">Publications</a></li>
+        <li><a href="#contact" data-nav="contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="theme-toggle-wrap">
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">&#9789;</button>
+          <span class="theme-label" id="themeLabel">Lights Off</span>
+        </div>
+        <button class="nav-burger" id="navBurger" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="https://tusharika-rastogi.github.io/portfolio_tusharika">About</a></li>
-          <li><a class="nav-link scrollto" href="#skills">Skills</a></li>
-          <li><a class="nav-link scrollto" href="#resume">Resume</a></li>
-          <li><a class="nav-link scrollto" href="#pubs">Publications/Posters</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
     </div>
-  </header><!-- End Header -->
+  </nav>
 
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-
-        <div class="row no-gutters">
-          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
-          <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
-            <div class="content d-flex flex-column justify-content-center">
-              <h3>Computational Biologist at Michigan Medicine</h3>
-              <br>
-              <p>
-                  Currently working as a Computational Biologist II at Michigan Medicine, I design and automate bioinformatics workflows 
-                  to support cancer genomics, transcriptomics, and proteomics research. I collaborate with clinicians, wet lab scientists, 
-                  and researchers to analyze and interpret large-scale multi-omics datasets, accelerating discoveries in precision medicine 
-                  and translational oncology.
-                </p>
-
-                <p>
-                  With expertise in Nextflow, AWS Batch, RNA-seq analysis, variant annotation, mutational signature profiling, and 
-                  copy number variation (CNV) detection, I build scalable, reproducible pipelines for high-throughput sequencing data. 
-                  My work has contributed to studies on patient-derived xenografts, plasma proteome comparisons, and 
-                  single-cell transcriptomics, uncovering actionable insights into tumor biology and disease progression.
-                </p>
-
-                <p>
-                  I hold a Master of Science in Bioinformatics from the University of Michigan, where I conducted research in cancer transcriptomics,
-                   developing RNA-seq pipelines to analyze gene expression and uncover regulatory pathways in disease models.
-                </p>
-
-                <p>
-                  Passionate about data-driven discovery, I aim to bridge biology and computation through robust, automated 
-                  solutions that translate complex sequencing data into meaningful biological insight.
-                </p>
-
-            </div><!-- End .content-->
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-<!-- ======= Skills Section ======= -->
-<section id="skills" class="skills section-bg">
-  <div class="container">
-    <div class="section-title">
-      <h2>Skills</h2>
-    </div>
-
-    <div class="accordion" id="skillsAccordion">
-
-      <!-- Programming Languages -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingLang">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLang" aria-expanded="true" aria-controls="collapseLang">
-            <strong>Programming Languages</strong>
-          </button>
-        </h2>
-        <div id="collapseLang" class="accordion-collapse collapse show" aria-labelledby="headingLang" data-bs-parent="#skillsAccordion">
-          <div class="accordion-body">
-            R, Python, Shell Scripting
-          </div>
-        </div>
-      </div>
-
-      <!-- Cloud Computing -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingCloud">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCloud" aria-expanded="false" aria-controls="collapseCloud">
-            <strong>Cloud Computing</strong>
-          </button>
-        </h2>
-        <div id="collapseCloud" class="accordion-collapse collapse" aria-labelledby="headingCloud" data-bs-parent="#skillsAccordion">
-          <div class="accordion-body">
-            AWS S3, AWS Batch, AWS EC2, High-performance Computing (HPC), Nextflow Tower (nf-tower)
-          </div>
-        </div>
-      </div>
-
-      <!-- Operating Systems -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOS">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOS" aria-expanded="false" aria-controls="collapseOS">
-            <strong>Operating Systems</strong>
-          </button>
-        </h2>
-        <div id="collapseOS" class="accordion-collapse collapse" aria-labelledby="headingOS" data-bs-parent="#skillsAccordion">
-          <div class="accordion-body">
-            Windows, Unix/Linux, Ubuntu, MacOS
-          </div>
-        </div>
-      </div>
-
-      <!-- Bioinformatics Tools & Packages -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTools">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTools" aria-expanded="false" aria-controls="collapseTools">
-            <strong>Bioinformatics Tools & Packages</strong>
-          </button>
-        </h2>
-        <div id="collapseTools" class="accordion-collapse collapse" aria-labelledby="headingTools" data-bs-parent="#skillsAccordion">
-          <div class="accordion-body">
-            DESeq2, Limma, Maftools, Pandas, Matplotlib, SciPy, dplyr, ggplot2, gprofiler, enrichplot, org.HS.eg.db, clusterProfiler, pheatmap, ComplexHeatmap, EnhancedVolcano, Plotly, UpsetR, Seurat, Numpy, BLAST, ORF Finder, SRAToolkit, FASTQC, Trimmomatic, HISAT2, StringTie, BowTie2, SAMTools, Xengsort, SigProfiler, Sequenza
-          </div>
-        </div>
-      </div>
-
-      <!-- Databases -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingDB">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDB" aria-expanded="false" aria-controls="collapseDB">
-            <strong>Databases</strong>
-          </button>
-        </h2>
-        <div id="collapseDB" class="accordion-collapse collapse" aria-labelledby="headingDB" data-bs-parent="#skillsAccordion">
-          <div class="accordion-body">
-            Entrez (NCBI), GenBank, RefSeq, EnsEMBL, TCGA, GDC Data Portal, miRbase, KEGG Pathway Database, UCSC Genome Browser, GENCODE, RCSB PDB, UniProt, SwissProt, STRING, GEO, SRA, COSMIC, ClinVar, dbNSFP
-          </div>
-        </div>
-      </div>
-
-      <!-- Scientific Communication -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingComms">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseComms" aria-expanded="false" aria-controls="collapseComms">
-            <strong>Scientific Communication</strong>
-          </button>
-        </h2>
-        <div id="collapseComms" class="accordion-collapse collapse" aria-labelledby="headingComms" data-bs-parent="#skillsAccordion">
-          <div class="accordion-body">
-            Translate complex bioinformatics analyses into clear, actionable insights, bridging the gap between computational biologists, wet lab scientists, and clinicians to drive informed decision-making.
-          </div>
-        </div>
-      </div>
-
-    </div>
+  <div class="nav-mobile-panel" id="navMobilePanel">
+    <ul>
+      <li><a href="#about"   class="mob-link">About</a></li>
+      <li><a href="#skills"  class="mob-link">Skills</a></li>
+      <li><a href="#projects" class="mob-link">Projects</a></li>
+      <li><a href="#resume"  class="mob-link">Resume</a></li>
+      <li><a href="#pubs"    class="mob-link">Publications</a></li>
+      <li><a href="#contact" class="mob-link">Contact</a></li>
+    </ul>
   </div>
-</section>
-<!-- End Skills Section -->
 
-  <!-- ======= Resume Section ======= -->
-  <section id="resume" class="resume section-bg">
+  <!-- ======================================================
+       HERO
+  ====================================================== -->
+  <section id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+
+      <div class="hero-photo-wrap">
+        <div class="hero-photo">
+          <img src="assets/img/profile.jpeg" alt="Tusharika Rastogi" />
+        </div>
+      </div>
+
+      <p class="hero-eyebrow">Computational Biologist</p>
+      <h1 class="hero-name">Tusharika Rastogi</h1>
+      <p class="hero-title">Cancer Genomics &middot; Computational Biology</p>
+      <p class="hero-descriptor">Turning raw sequencing data into <strong>biological insight</strong>, one pipeline at a time.</p>
+
+      <div class="hero-ctas">
+        <a href="#resume" class="btn btn-primary">
+          View Resume
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="assets/files/Resume_TusharikaRastogi.pdf" class="btn btn-outline" download>
+          Download CV
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 2v8M4.5 7l3 3 3-3M2.5 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================
+       ABOUT
+  ====================================================== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-left reveal">
+          <p class="about-pull-quote">"Building pipelines that turn raw sequencing data into <em>biological insight.</em>"</p>
+          <div class="about-rule"></div>
+        </div>
+
+        <div class="about-right reveal d1">
+          <p class="section-eyebrow">About</p>
+          <p>I design and automate bioinformatics workflows for cancer genomics, transcriptomics, and proteomics research. My work spans somatic variant calling, CNV analysis, mutational signature profiling, and RNA-seq, executed on AWS Batch and HPC using Nextflow. I collaborate with clinicians, wet lab scientists, and researchers to translate large-scale multi-omics datasets into findings that drive precision oncology decisions.</p>
+          <p>With expertise in <strong>Nextflow, AWS Batch, RNA-seq analysis, variant annotation, mutational signature profiling, and copy number variation (CNV) detection</strong>, I build scalable, reproducible pipelines for high-throughput sequencing data. My work has contributed to studies on patient-derived xenografts, plasma proteome comparisons, and single-cell transcriptomics, uncovering actionable insights into tumor biology and disease progression.</p>
+          <p>I hold a <strong>Master of Science in Bioinformatics from the University of Michigan</strong>, where I conducted research in cancer transcriptomics, developing RNA-seq pipelines to analyze gene expression and uncover regulatory pathways in disease models.</p>
+          <p>Passionate about data-driven discovery, I aim to bridge biology and computation through robust, automated solutions that translate complex sequencing data into meaningful biological insight.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SKILLS
+  ====================================================== -->
+  <section id="skills" class="section">
     <div class="container">
 
-      <div class="section-title">
-        <h2>Resume</h2>
-          <a href="assets/files/Resume_TusharikaRastogi.pdf" class="btn btn-primary" download>
-            <i class="bi bi-download"></i> Download Resume
+      <p class="section-eyebrow reveal">Capabilities</p>
+      <h2 class="section-title reveal d1">Skills</h2>
+
+      <div class="skills-grid reveal d2">
+
+        <div class="skill-cat">
+          <p class="skill-cat-name">Programming Languages</p>
+          <div class="skill-tags">
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Shell Scripting</span>
+          </div>
+        </div>
+
+        <div class="skill-cat">
+          <p class="skill-cat-name">Cloud &amp; HPC</p>
+          <div class="skill-tags">
+            <span class="skill-tag">AWS S3</span>
+            <span class="skill-tag">AWS Batch</span>
+            <span class="skill-tag">AWS EC2</span>
+            <span class="skill-tag">HPC</span>
+            <span class="skill-tag">Nextflow</span>
+            <span class="skill-tag">nf-tower</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+
+        <div class="skill-cat">
+          <p class="skill-cat-name">Operating Systems</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Unix/Linux</span>
+            <span class="skill-tag">Ubuntu</span>
+            <span class="skill-tag">macOS</span>
+            <span class="skill-tag">Windows</span>
+          </div>
+        </div>
+
+        <div class="skill-cat">
+          <p class="skill-cat-name">Bioinformatics Tools</p>
+          <div class="skill-tags">
+            <span class="skill-tag">DESeq2</span>
+            <span class="skill-tag">Limma</span>
+            <span class="skill-tag">Maftools</span>
+            <span class="skill-tag">SigProfiler</span>
+            <span class="skill-tag">Sequenza</span>
+            <span class="skill-tag">Seurat</span>
+            <span class="skill-tag">ComplexHeatmap</span>
+            <span class="skill-tag">ggplot2</span>
+            <span class="skill-tag">clusterProfiler</span>
+            <span class="skill-tag">STAR / HISAT2</span>
+            <span class="skill-tag">SAMTools</span>
+            <span class="skill-tag">FASTQC</span>
+            <span class="skill-tag">Trimmomatic</span>
+            <span class="skill-tag">vcf2maf</span>
+            <span class="skill-tag">VarSeq</span>
+          </div>
+        </div>
+
+        <div class="skill-cat">
+          <p class="skill-cat-name">Databases &amp; Resources</p>
+          <div class="skill-tags">
+            <span class="skill-tag">TCGA / GDC</span>
+            <span class="skill-tag">COSMIC</span>
+            <span class="skill-tag">ClinVar</span>
+            <span class="skill-tag">dbNSFP</span>
+            <span class="skill-tag">GEO / SRA</span>
+            <span class="skill-tag">NCBI / GenBank</span>
+            <span class="skill-tag">EnsEMBL</span>
+            <span class="skill-tag">UniProt</span>
+            <span class="skill-tag">KEGG</span>
+          </div>
+        </div>
+
+        <div class="skill-cat">
+          <p class="skill-cat-name">Scientific Communication</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Cross-functional collaboration</span>
+            <span class="skill-tag">Translating computational results</span>
+            <span class="skill-tag">Lab meeting presentations</span>
+            <span class="skill-tag">Clinical stakeholder reporting</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       PROJECTS
+  ====================================================== -->
+  <section id="projects" class="section">
+    <div class="container">
+
+      <p class="section-eyebrow reveal">Selected Projects</p>
+      <h2 class="section-title reveal d1">Projects</h2>
+
+      <div class="projects-grid">
+
+        <!-- Card 1: Fusion Annotator -->
+        <div class="project-card reveal">
+          <div class="project-card-top">
+            <div class="project-tags">
+              <span class="project-tag">Clinical Tool</span>
+              <span class="project-tag">Deployed</span>
+            </div>
+            <div class="project-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 10 Q3 5 5 10 Q7 15 9 10 Q11 5 13 10 Q15 15 17 10 Q18.5 6.5 19 10"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="project-title">Fusion Annotator</h3>
+          <p class="project-desc">A deployed web app for classifying EML4-ALK gene fusions from chromosomal breakpoint coordinates. Supports hg19 and hg38, handles single-entry and batch CSV input, and applies canonical variant classification rules including intron-junction detection. Built to remove a recurring manual step from clinical genomics workflows.</p>
+          <div class="project-stack">
+            <span class="stack-tag">Python</span>
+            <span class="stack-tag">Streamlit</span>
+            <span class="stack-tag">Ensembl BioMart</span>
+            <span class="stack-tag">hg19/hg38</span>
+          </div>
+          <div class="project-links">
+            <a href="https://fusion-annotator.streamlit.app" class="project-link link-primary" target="_blank" rel="noopener noreferrer">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2H2a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1V8M8 1h3m0 0v3m0-3L5 6"/></svg>
+              Live App
+            </a>
+            <a href="https://github.com/tusharika-rastogi/fusion-annotator" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Claude Chat Dashboard -->
+        <div class="project-card reveal d1">
+          <div class="project-card-top">
+            <div class="project-tags">
+              <span class="project-tag">Open Source</span>
+              <span class="project-tag">Tool</span>
+            </div>
+            <div class="project-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="1" width="8" height="8" rx="1.5"/>
+                <rect x="11" y="1" width="8" height="8" rx="1.5"/>
+                <rect x="1" y="11" width="8" height="8" rx="1.5"/>
+                <rect x="11" y="11" width="8" height="8" rx="1.5"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="project-title">Claude Chat Dashboard</h3>
+          <p class="project-desc">A Claude skill that fetches your full conversation history and renders it as a searchable, tagged dashboard. Built for personal use, then open-sourced. PR submitted to the awesome-claude-skills registry.</p>
+          <div class="project-stack">
+            <span class="stack-tag">JavaScript</span>
+            <span class="stack-tag">Claude Skills API</span>
+            <span class="stack-tag">HTML/CSS</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/tusharika-rastogi/claude-chat-dashboard" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Neoantigen Target Discovery -->
+        <div class="project-card reveal d2">
+          <div class="project-card-top">
+            <div class="project-tags">
+              <span class="project-tag">Cancer Genomics</span>
+              <span class="project-tag">Multiple Myeloma</span>
+            </div>
+            <div class="project-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="10" cy="10" r="8"/>
+                <line x1="10" y1="2" x2="10" y2="18"/>
+                <line x1="2" y1="10" x2="18" y2="10"/>
+                <circle cx="10" cy="10" r="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="project-title">Neoantigen Target Discovery</h3>
+          <p class="project-desc">An end-to-end pipeline for identifying neoantigen candidates from somatic mutation data. Processes 1,091 Multiple Myeloma patient MAFs from the MMRF CoMMpass study, extracts missense mutations, constructs 9-mer peptides, and runs MHC-I binding prediction with netMHCpan 4.2c. Identifies recurrent driver mutations in NRAS, KRAS, and BRAF as priority vaccine candidates.</p>
+          <div class="project-stack">
+            <span class="stack-tag">Python</span>
+            <span class="stack-tag">netMHCpan 4.2c</span>
+            <span class="stack-tag">pandas</span>
+            <span class="stack-tag">GDC/MMRF CoMMpass</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/tusharika-rastogi/neoantigen-target-discovery" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       RESUME
+  ====================================================== -->
+  <section id="resume" class="section">
+    <div class="container">
+
+      <p class="section-eyebrow reveal">Experience &amp; Education</p>
+      <h2 class="section-title reveal d1">Resume</h2>
+
+      <a href="assets/files/Resume_TusharikaRastogi.pdf" class="resume-download reveal d2" download>
+        <svg width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M7.5 2v8M4.5 7l3 3 3-3M2.5 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download Full Resume
+      </a>
+
+      <p class="resume-group-title reveal">Professional Experience</p>
+
+      <div class="case-list">
+
+        <!-- Comp Bio II -->
+        <div class="case-card reveal">
+          <div class="case-card-header" role="button" tabindex="0" aria-expanded="false">
+            <div class="case-card-left">
+              <div class="case-meta">
+                <span class="case-tag">Current Role</span>
+                <span class="case-platform">Michigan Medicine</span>
+              </div>
+              <h3 class="case-title">Computational Biologist II</h3>
+            </div>
+            <div class="case-card-right">
+              <div class="case-stat">
+                <div class="case-stat-num">2023–</div>
+                <div class="case-stat-label">Present</div>
+              </div>
+              <div class="case-toggle" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="case-body">
+            <ul>
+              <li>Automated bioinformatics workflows with <strong>Nextflow</strong> (Sarek, RNAseq, RNAfusion), reducing processing time by 60–80% on AWS Batch and HPC for high-throughput genomic analysis.</li>
+              <li>Leveraged <strong>VarSeq</strong> for comprehensive variant annotation adhering to GATK Best Practices to identify clinically relevant genetic variants supporting precision medicine.</li>
+              <li>Performed <strong>copy number variation (CNV) analysis</strong> using Sequenza on 100+ tumor samples to identify chromosomal alterations and infer tumor purity and ploidy.</li>
+              <li>Conducted <strong>proteomics analysis</strong> comparing plasma protein profiles across conditions using limma; calculated dynamic range to evaluate protein variability.</li>
+              <li>Performed <strong>mutational signature analysis</strong> using SigProfiler to deconvolute signature contributions and distinguish endogenous vs. exogenous mutation sources.</li>
+              <li>Developed automation scripts including the <strong>dbNSFP Prediction Aggregation tool</strong> and Jaccard Index, reducing manual review and data processing time by over 50%.</li>
+              <li>Deliver bioinformatics insights in weekly team meetings and monthly lab meetings, distilling complex computational results for interdisciplinary teams including wet lab scientists and clinicians.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bioinformatics Specialist -->
+        <div class="case-card reveal d1">
+          <div class="case-card-header" role="button" tabindex="0" aria-expanded="false">
+            <div class="case-card-left">
+              <div class="case-meta">
+                <span class="case-tag">Contract</span>
+                <span class="case-platform">Michigan Medicine</span>
+              </div>
+              <h3 class="case-title">Bioinformatics Specialist</h3>
+            </div>
+            <div class="case-card-right">
+              <div class="case-stat">
+                <div class="case-stat-num">2022</div>
+                <div class="case-stat-label">Nov – Dec</div>
+              </div>
+              <div class="case-toggle" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="case-body">
+            <ul>
+              <li>Analyzed <strong>scRNAseq and snRNAseq data</strong> using Seurat in R to identify distinct cell populations in visceral vs. subcutaneous adipose tissue across disease conditions.</li>
+              <li>Provided insights into metabolic disease mechanisms and tissue-specific immune responses, supporting research on obesity and therapeutic interventions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Summer Intern -->
+        <div class="case-card reveal d2">
+          <div class="case-card-header" role="button" tabindex="0" aria-expanded="false">
+            <div class="case-card-left">
+              <div class="case-meta">
+                <span class="case-tag">Internship</span>
+                <span class="case-platform">IIT Gandhinagar, India</span>
+              </div>
+              <h3 class="case-title">Bioinformatics Summer Intern</h3>
+            </div>
+            <div class="case-card-right">
+              <div class="case-stat">
+                <div class="case-stat-num">2022</div>
+                <div class="case-stat-label">May – Jul</div>
+              </div>
+              <div class="case-toggle" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="case-body">
+            <ul>
+              <li>Developed an <strong>R-based pipeline for HNSCC data analysis</strong>, identifying 895 differentially expressed genes (DEGs) and 69 differentially expressed miRNAs (DEMs).</li>
+              <li>Conducted predictive analysis identifying 177 DEGs inversely correlated with differentially expressed miRNAs, providing insights into HNSCC regulatory mechanisms.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="resume-group-title reveal" style="margin-top: 4rem;">Education</p>
+
+      <div class="case-list">
+
+        <!-- MS -->
+        <div class="case-card reveal">
+          <div class="case-card-header" role="button" tabindex="0" aria-expanded="false">
+            <div class="case-card-left">
+              <div class="case-meta">
+                <span class="case-tag">Graduate</span>
+                <span class="case-platform">University of Michigan, Ann Arbor</span>
+              </div>
+              <h3 class="case-title">M.S. Bioinformatics</h3>
+            </div>
+            <div class="case-card-right">
+              <div class="case-stat">
+                <div class="case-stat-num">3.65</div>
+                <div class="case-stat-label">GPA &middot; 2021–2022</div>
+              </div>
+              <div class="case-toggle" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="case-body">
+            <ul>
+              <li><strong>Research:</strong> RNAseq-based transcriptomic profiling of Preterm Birth and Prostate Cancer for regulatory signature analysis and identification of potential therapeutic targets.</li>
+              <li><strong>Relevant Coursework:</strong> Bioinformatics Concepts and Algorithms, Programming Laboratory in Bioinformatics, Applied Biostatistics, High-throughput Genomic and Epigenomic Data Analysis.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BTech -->
+        <div class="case-card reveal d1">
+          <div class="case-card-header" role="button" tabindex="0" aria-expanded="false">
+            <div class="case-card-left">
+              <div class="case-meta">
+                <span class="case-tag">Undergraduate</span>
+                <span class="case-platform">Amity University, Noida, India</span>
+              </div>
+              <h3 class="case-title">B.Tech Bioinformatics</h3>
+            </div>
+            <div class="case-card-right">
+              <div class="case-stat">
+                <div class="case-stat-num">4.0</div>
+                <div class="case-stat-label">GPA &middot; 2017–2021</div>
+              </div>
+              <div class="case-toggle" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="case-body">
+            <ul>
+              <li><strong>Research:</strong> Transcriptomic analysis of reproductive health datasets, focusing on infertility and IVF-related gene expression using RNA-seq workflows.</li>
+              <li>Graduated with First Division with Distinction.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       PUBLICATIONS
+  ====================================================== -->
+  <section id="pubs" class="section">
+    <div class="container">
+
+      <p class="section-eyebrow reveal">Research Output</p>
+      <h2 class="section-title reveal d1">Publications &amp; Posters</h2>
+
+      <div class="pub-list">
+
+        <div class="pub-item reveal">
+          <span class="pub-type">Journal Article</span>
+          <p class="pub-title">Examining Molecular Features of Rare Brain Metastases Patient-Derived Xenograft Models</p>
+          <p class="pub-meta">
+            Journal of the National Comprehensive Cancer Network (JNCCN) &nbsp;&middot;&nbsp; March 2025<br/>
+            DOI: <a href="https://doi.org/10.6004/jnccn.2024.7245" target="_blank" rel="noopener noreferrer">10.6004/jnccn.2024.7245</a>
+          </p>
+        </div>
+
+        <div class="pub-item reveal d1">
+          <span class="pub-type">Conference Abstract</span>
+          <p class="pub-title">Examining Molecular Landscape and Drug Sensitivity Profiles of Patient-Derived Xenografts from Resected Brain Metastases</p>
+          <p class="pub-meta">
+            Journal of Clinical Oncology, Vol. 42 (JCO) &nbsp;&middot;&nbsp; August 2024<br/>
+            DOI: <a href="https://doi.org/10.1200/JCO.2024.42.23_suppl.28" target="_blank" rel="noopener noreferrer">10.1200/JCO.2024.42.23_suppl.28</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       CONTACT
+  ====================================================== -->
+  <section id="contact" class="section">
+    <div class="container">
+
+      <p class="section-eyebrow reveal">Get in Touch</p>
+      <h2 class="section-title reveal d1">Contact</h2>
+
+      <div class="contact-grid reveal d2">
+
+        <div class="contact-info">
+          <p class="contact-blurb">Open to collaborations in cancer genomics, precision medicine research, and bioinformatics pipeline development.</p>
+          <a href="mailto:tusharikarastogi2012@gmail.com" class="contact-email-link">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="3" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 5l6.5 5L14 5" stroke="currentColor" stroke-width="1.3"/></svg>
+            tusharikarastogi2012@gmail.com
           </a>
+          <div class="contact-socials">
+            <a href="https://www.linkedin.com/in/tusharikarastogi" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452H17.03v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.627V9h3.276v1.561h.046c.455-.861 1.566-1.769 3.225-1.769 3.451 0 4.088 2.271 4.088 5.228v6.432h-.815zM5.337 7.433a1.896 1.896 0 01-1.896-1.897c0-1.048.849-1.897 1.896-1.897 1.048 0 1.896.849 1.896 1.897 0 1.048-.848 1.897-1.896 1.897zm1.639 13.019H3.697V9h3.279v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://github.com/tusharika-rastogi" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
         </div>
 
-      <div class="row">
-
-          <!--<div class="col-lg-6">-->
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Computational Biologist II</h4>
-              <h5>May 2023 - Present</h5>
-              <p><em>Michigan Medicine</em></p>
-              <p>
-                <ul>
-                  <li>Automated bioinformatics workflows with Nextflow (Sarek for DNA Variant Analysis, RNAseq, and RNAfusion), reducing processing time by 60-80% and ensuring scalability on AWS Batch/HPC for high-throughput genomic analysis. Enhanced reproducibility and efficiency, enabling accurate and reliable large-scale data analysis.
-                  <li>Leveraged VarSeq for comprehensive variant annotation, adhering to GATK Best Practices for high-quality genomic analysis, to identify clinically relevant genetic variants, supporting precision medicine and research.
-                  <li>Performed copy number variation (CNV) analysis using Sequenza on 100+ tumor samples, with and without matched normal controls, to identify chromosomal alterations and infer tumor purity and ploidy, providing critical insights for cancer characterization.
-                  <li>Conducted proteomics analysis to compare plasma protein profiles across experimental conditions, performing differential abundance analysis using limma and calculating dynamic range to evaluate protein variability.
-                  <li>Performed mutational signature analysis using computational frameworks like SigProfiler to uncover underlying mutational processes in tumor samples, deconvolute signature contributions to distinguish endogenous vs. exogenous mutation sources, providing key insights into tumor etiology and potential carcinogenic influences.
-                  <li>Developed automation scripts, including the dbNSFP Prediction Aggregation tool and Jaccard Index, to streamline bioinformatics workflows. Engineered automated functions that reduced manual review and data processing time by over 50%, enhancing efficiency and scalability for genomic analysis.
-                  <li>Deliver bioinformatics insights in weekly team meetings, driving workflow development, data analysis progress, and troubleshooting. Present research in monthly lab meetings, distilling complex computational results into actionable insights for interdisciplinary teams, including wet lab scientists and clinicians, to enhance collaboration and decision-making.
-                </ul>
-              </p>
+        <div>
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/tusharikarastogi2012@gmail.com" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />
             </div>
-            <div class="resume-item">
-              <h4>Bioinformatics Specialist</h4>
-              <h5>November 2022 - December 2022</h5>
-              <p><em>Michigan Medicine</em></p>
-              <p>
-                <ul>
-                <li>Analyzed scRNASeq and snRNASeq data using Seurat in R to identify distinct cell populations in visceral vs. subcutaneous adipose tissue across disease conditions. Provided insights into metabolic disease mechanisms and tissue-specific immune responses, supporting research on obesity and therapeutic interventions.    
-              </ul>
-              </p>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
             </div>
-            <div class="resume-item">
-              <h4>Bioinformatics Summer Intern</h4>
-              <h5>May 2022 - July 2022</h5>
-              <p><em>Indian Institute of Technology, Gandhinagar, India</em></p>
-              <p>
-                <ul>
-                  <li>Developed and implemented an R-based pipeline for comprehensive HNSCC data analysis, identifying 895 differentially expressed genes (DEGs) and 69 differentially expressed miRNAs (DEMs). Provided insights into key regulatory pathways, potential biomarkers, and therapeutic targets for cancer research.
-                  <li>Conducted predictive analysis to identify 177 DEGs inversely correlated with differentially expressed miRNAs, providing insights into HNSCC regulatory mechanisms, thus demonstrating an ability to derive meaningful biological insights from complex data sets.  
-              </ul>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Your message..." required></textarea>
             </div>
+            <button type="submit" class="form-submit" id="formSubmitBtn">
+              Send Message
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            Thanks! I'll get back to you within 24 hours.
           </div>
-        <!--</div>-->
-        
-        <!--<div class="col-lg-6">-->
-
-
-          <h3 class="resume-title">Education</h3>
-          <div class="resume-item">
-            <h4>Master of Science, Bioinformatics</h4>
-            <h5>Aug 2021 - Dec 2022</h5>
-            <p><em>University of Michigan, Ann Arbor, MI</em></p>
-            <p>
-              <ul>
-                <li>Cumulative GPA: <b>3.65</b></li>
-                <li>Research: RNAseq based transcriptomic profiling of Preterm Birth and Prostate Cancer for regulatory signature analysis and identification of potential therapeutic targets</a></li>
-                <li>Relevant Coursework: Bioinformatics Concepts and Algorithms, Programming Laboratory in Bioinformatics, Applied Biostatistics, High-throughput Molecular Genomic and Epigenomic Data Analysis</li>
-              </ul>
-            </p>
-          </div>
-          <div class="resume-item">
-            <h4>Bachelor of Technology, Bioinformatics</h4>
-            <h5>Jul 2017 - June 2021</h5>
-            <p><em>Amity University, Noida, India</em></p>
-            <p>
-              <ul>
-                <li>Cumulative GPA: <b>4.0</b></li>
-                <li>Research: Transcriptomic analysis of reproductive health datasets, focusing on infertility and IVF-related gene expression using RNA-seq workflows.</a></li>
-                <li>Graduated with First Divison with Distinction</li>
-              </ul>
-            </p>
-          </div>
-        <!--</div>-->
-
-    </div>
-  </section><!-- End Resume Section -->
-
-     <section id="pubs" class="portfolio section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Publication/Posters</h2>
-                    <h4>Examining Molecular Features of Rare Brain Metastases Patient-Derived Xenograft Models</h4>
-          <p>Official Journal of the National Comprehensive Cancer Network (JNCCN) | DOI: <a href="https://doi.org/10.6004/jnccn.2024.7245">10.6004/jnccn.2024.7245</a> | March 2025</p>
-          <br>
-          <h4>Examining molecular landscape and drug sensitivity profiles of patient-derived xenografts from resected brain metastases</h4>
-          <p>Journal of Clinical Oncology Volume 42 (JCO )| DOI: <a href="https://doi.org/10.1200/JCO.2024.42.23_suppl.28">10.1200/JCO.2024.42.23_suppl.28</a> | August 2024 </p>
-          <br>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          </div>
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-4">
-            <div class="contact-about">
-              <h3>Tusharika Rastogi</h3>
-              <div class="social-links">
-                <a href="https://www.linkedin.com/in/tusharikarastogi" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                <a href="https://github.com/tusharika-rastogi" class="github"><i class="fa-brands fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="info">
-              <div class="d-flex align-items-center">
-                <i class="bi bi-geo-alt"></i>
-                <p>Ann Arbor<br>Michigan, MI 48105</p>
-              </div>
-
-              <div class="d-flex align-items-center mt-4">
-                <i class="bi bi-envelope"></i>
-                <p><a href="mailto:tusharikarastogi2012@gmail.com">tusharikarastogi2012@gmail.com</a></p>
-              </div>
-
-            </div>
-          </div>
-
         </div>
 
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Lonely</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-lonely/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer><!-- End  Footer -->
+  </section>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- ======================================================
+       FOOTER
+  ====================================================== -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Tusharika Rastogi</span>
+      <span class="footer-copy">Cancer Genomics &middot; Computational Biology</span>
+    </div>
+  </footer>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- Back to top -->
+  <button id="backToTop" aria-label="Back to top">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 10l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <!-- ======================================================
+       JAVASCRIPT
+  ====================================================== -->
+  <script>
+    'use strict';
+
+    /* THEME TOGGLE */
+    var html        = document.documentElement;
+    var themeToggle = document.getElementById('themeToggle');
+    var themeLabel  = document.getElementById('themeLabel');
+
+    function applyTheme(theme) {
+      html.dataset.theme = theme;
+      themeToggle.textContent = theme === 'light' ? '\u2600' : '\u263D';
+      themeLabel.textContent  = theme === 'light' ? 'Lights Off' : 'Lights On';
+      localStorage.setItem('theme', theme);
+    }
+
+    var savedTheme = localStorage.getItem('theme');
+    var sysLight   = window.matchMedia('(prefers-color-scheme: light)').matches;
+    applyTheme(savedTheme || (sysLight ? 'light' : 'dark'));
+
+    themeToggle.addEventListener('click', function () {
+      applyTheme(html.dataset.theme === 'light' ? 'dark' : 'light');
+    });
+
+    /* NAV SCROLL */
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    /* MOBILE NAV */
+    var burger      = document.getElementById('navBurger');
+    var mobilePanel = document.getElementById('navMobilePanel');
+
+    burger.addEventListener('click', function () {
+      var open = burger.classList.toggle('open');
+      mobilePanel.classList.toggle('open', open);
+    });
+
+    document.querySelectorAll('.mob-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        burger.classList.remove('open');
+        mobilePanel.classList.remove('open');
+      });
+    });
+
+    /* ACTIVE NAV LINK — IntersectionObserver */
+    var sections  = document.querySelectorAll('section[id]');
+    var navLinks  = document.querySelectorAll('.nav-links a[data-nav]');
+
+    var sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          navLinks.forEach(function (a) {
+            a.classList.toggle('active', a.dataset.nav === id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sections.forEach(function (s) { sectionObserver.observe(s); });
+
+    /* SCROLL REVEAL */
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      revealObserver.observe(el);
+    });
+
+    /* CASE CARD ACCORDION */
+    document.querySelectorAll('.case-card-header').forEach(function (header) {
+      header.addEventListener('click', function () {
+        var card    = header.closest('.case-card');
+        var isOpen  = card.classList.contains('open');
+        card.classList.toggle('open', !isOpen);
+        header.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      header.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
+      });
+    });
+
+    /* BACK TO TOP */
+    var backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', function () {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* CONTACT FORM */
+    var contactForm      = document.getElementById('contactForm');
+    var formSuccess      = document.getElementById('formSuccess');
+    var formSubmitBtn    = document.getElementById('formSubmitBtn');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        formSubmitBtn.disabled = true;
+        formSubmitBtn.textContent = 'Sending…';
+
+        fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (res) {
+          if (res.ok) {
+            contactForm.style.display = 'none';
+            formSuccess.style.display = 'block';
+          } else {
+            formSubmitBtn.disabled = false;
+            formSubmitBtn.textContent = 'Send Message';
+            alert('Something went wrong. Please email me directly.');
+          }
+        }).catch(function () {
+          formSubmitBtn.disabled = false;
+          formSubmitBtn.textContent = 'Send Message';
+          alert('Something went wrong. Please email me directly.');
+        });
+      });
+    }
+  </script>
 
 </body>
-
 </html>
