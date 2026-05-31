@@ -955,6 +955,34 @@
       color: var(--accent);
     }
 
+    .form-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .form-actions-or {
+      font-size: 0.85rem;
+      color: var(--text-3);
+    }
+    .form-schedule {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-1);
+      padding: 0.875rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color var(--ease), color var(--ease);
+    }
+    .form-schedule:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
     /* ============================================================
        FOOTER
     ============================================================ */
@@ -1538,49 +1566,19 @@
           </div>
           <div class="case-body">
             <ul>
-              <li>Automated bioinformatics workflows with <strong>Nextflow</strong> (Sarek, RNAseq, RNAfusion), reducing processing time by 60–80% on AWS Batch and HPC for high-throughput genomic analysis.</li>
-              <li>Leveraged <strong>VarSeq</strong> for comprehensive variant annotation adhering to GATK Best Practices to identify clinically relevant genetic variants supporting precision medicine.</li>
-              <li>Performed <strong>copy number variation (CNV) analysis</strong> using Sequenza on 100+ tumor samples to identify chromosomal alterations and infer tumor purity and ploidy.</li>
-              <li>Conducted <strong>proteomics analysis</strong> comparing plasma protein profiles across conditions using limma; calculated dynamic range to evaluate protein variability.</li>
-              <li>Performed <strong>mutational signature analysis</strong> using SigProfiler to deconvolute signature contributions and distinguish endogenous vs. exogenous mutation sources.</li>
-              <li>Developed automation scripts including the <strong>dbNSFP Prediction Aggregation tool</strong> and Jaccard Index, reducing manual review and data processing time by over 50%.</li>
-              <li>Deliver bioinformatics insights in weekly team meetings and monthly lab meetings, distilling complex computational results for interdisciplinary teams including wet lab scientists and clinicians.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Bioinformatics Specialist -->
-        <div class="case-card reveal d1">
-          <div class="case-card-header" role="button" tabindex="0" aria-expanded="false">
-            <div class="case-card-left">
-              <div class="case-meta">
-                <span class="case-tag">Contract</span>
-                <span class="case-platform">Michigan Medicine</span>
-              </div>
-              <h3 class="case-title">Bioinformatics Specialist</h3>
-            </div>
-            <div class="case-card-right">
-              <div class="case-stat">
-                <div class="case-stat-num">2022</div>
-                <div class="case-stat-label">Nov – Dec</div>
-              </div>
-              <div class="case-toggle" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div class="case-body">
-            <ul>
-              <li>Analyzed <strong>scRNAseq and snRNAseq data</strong> using Seurat in R to identify distinct cell populations in visceral vs. subcutaneous adipose tissue across disease conditions.</li>
-              <li>Provided insights into metabolic disease mechanisms and tissue-specific immune responses, supporting research on obesity and therapeutic interventions.</li>
+              <li>Configured, scaled, and executed nf-core <strong>Nextflow</strong> workflows (Sarek for DNA variant calling, RNA-seq, and fusion detection) on AWS Batch and HPC, reducing processing time by 60–80% through optimized parallelization and resource configuration, while improving reproducibility.</li>
+              <li>Designed and executed <strong>differential expression and pathway analysis</strong> pipelines across NSCLC cohorts (ALK, EGFR, KRAS) as primary analyst for a collaboration with Tempus AI.</li>
+              <li>Identified clinically actionable variants and characterized mutational landscapes across 200+ tumor samples (PDX, patient-derived, and cell lines) using <strong>GATK Best Practices</strong> and VarSeq annotation, supporting precision oncology efforts across multiple active research cohorts.</li>
+              <li>Performed <strong>copy number variation (CNV) analysis</strong> using Sequenza on 100+ tumor samples, with and without matched normal controls, inferring chromosomal alterations, tumor purity, and ploidy.</li>
+              <li>Evaluated proteomics platform suitability for tumor sample analysis using <strong>limma</strong>-based differential abundance and dynamic range assessment.</li>
+              <li>Characterized mutational signatures in tumor samples using <strong>SigProfiler</strong>, distinguishing endogenous vs. exogenous processes to uncover potential carcinogenic mechanisms.</li>
+              <li>Developed internal automation utilities (e.g., dbNSFP Aggregator, cohort comparison metrics, annotated oncoplots) to reduce manual review time by over 50% and improve consistency across analyses, supporting interpretation by wet-lab and clinical collaborators.</li>
             </ul>
           </div>
         </div>
 
         <!-- Summer Intern -->
-        <div class="case-card reveal d2">
+        <div class="case-card reveal d1">
           <div class="case-card-header" role="button" tabindex="0" aria-expanded="false">
             <div class="case-card-left">
               <div class="case-meta">
@@ -1603,8 +1601,8 @@
           </div>
           <div class="case-body">
             <ul>
-              <li>Developed an <strong>R-based pipeline for HNSCC data analysis</strong>, identifying 895 differentially expressed genes (DEGs) and 69 differentially expressed miRNAs (DEMs).</li>
-              <li>Conducted predictive analysis identifying 177 DEGs inversely correlated with differentially expressed miRNAs, providing insights into HNSCC regulatory mechanisms.</li>
+              <li>Developed an <strong>R pipeline</strong> to analyze HNSCC transcriptomic data, identifying 895 DEGs and 69 DEMs.</li>
+              <li>Revealed post-transcriptional regulatory mechanisms and candidate therapeutic targets through DEG–miRNA correlation and pathway enrichment analysis.</li>
             </ul>
           </div>
         </div>
@@ -1691,20 +1689,37 @@
       <div class="pub-list">
 
         <div class="pub-item reveal">
-          <span class="pub-type">Journal Article</span>
-          <p class="pub-title">Examining Molecular Features of Rare Brain Metastases Patient-Derived Xenograft Models</p>
+          <span class="pub-type">Manuscript in Preparation</span>
+          <p class="pub-title">Developing Diverse Patient-Derived Xenograft Models of Common and Rare Brain Metastases to Elucidate Molecular Landscapes and Reveal Therapeutic Opportunities</p>
           <p class="pub-meta">
-            Journal of the National Comprehensive Cancer Network (JNCCN) &nbsp;&middot;&nbsp; March 2025<br/>
-            DOI: <a href="https://doi.org/10.6004/jnccn.2024.7245" target="_blank" rel="noopener noreferrer">10.6004/jnccn.2024.7245</a>
+            Brain Metastasis Cohort &nbsp;&middot;&nbsp; 2026
           </p>
         </div>
 
         <div class="pub-item reveal d1">
-          <span class="pub-type">Conference Abstract</span>
+          <span class="pub-type">Poster</span>
+          <p class="pub-title">Examining Molecular Features of Rare Brain Metastases Patient-Derived Xenograft Models</p>
+          <p class="pub-meta">
+            AACR Special Conference in Cancer Research: Brain Cancer &nbsp;&middot;&nbsp; March 2026<br/>
+            2nd Author
+          </p>
+        </div>
+
+        <div class="pub-item reveal d2">
+          <span class="pub-type">Poster</span>
+          <p class="pub-title">Examining Molecular Features of Rare Brain Metastases Patient-Derived Xenograft Models</p>
+          <p class="pub-meta">
+            Journal of the National Comprehensive Cancer Network (JNCCN) &nbsp;&middot;&nbsp; March 2025<br/>
+            4th Author &nbsp;&middot;&nbsp; DOI: <a href="https://doi.org/10.6004/jnccn.2024.7245" target="_blank" rel="noopener noreferrer">10.6004/jnccn.2024.7245</a>
+          </p>
+        </div>
+
+        <div class="pub-item reveal d3">
+          <span class="pub-type">Poster</span>
           <p class="pub-title">Examining Molecular Landscape and Drug Sensitivity Profiles of Patient-Derived Xenografts from Resected Brain Metastases</p>
           <p class="pub-meta">
             Journal of Clinical Oncology, Vol. 42 (JCO) &nbsp;&middot;&nbsp; August 2024<br/>
-            DOI: <a href="https://doi.org/10.1200/JCO.2024.42.23_suppl.28" target="_blank" rel="noopener noreferrer">10.1200/JCO.2024.42.23_suppl.28</a>
+            2nd Author &nbsp;&middot;&nbsp; DOI: <a href="https://doi.org/10.1200/JCO.2024.42.23_suppl.28" target="_blank" rel="noopener noreferrer">10.1200/JCO.2024.42.23_suppl.28</a>
           </p>
         </div>
 
@@ -1740,7 +1755,7 @@
         </div>
 
         <div>
-          <form class="contact-form" id="contactForm" action="https://formspree.io/f/tusharikarastogi2012@gmail.com" method="POST">
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/xqejvavp" method="POST">
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />
@@ -1753,10 +1768,17 @@
               <label for="message">Message</label>
               <textarea id="message" name="message" placeholder="Your message..." required></textarea>
             </div>
-            <button type="submit" class="form-submit" id="formSubmitBtn">
-              Send Message
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+            <div class="form-actions">
+              <button type="submit" class="form-submit" id="formSubmitBtn">
+                Send Message
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <span class="form-actions-or">or</span>
+              <a href="https://calendly.com/tusharikarastogi/30min" target="_blank" rel="noopener noreferrer" class="form-schedule">
+                Schedule a 20-min call
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 5.5h12M4.5 1v2.5M9.5 1v2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              </a>
+            </div>
           </form>
           <div class="form-success" id="formSuccess">
             Thanks! I'll get back to you within 24 hours.
@@ -1764,6 +1786,7 @@
         </div>
 
       </div>
+
     </div>
   </section>
 
@@ -1919,6 +1942,7 @@
       });
     }
   </script>
+
 
 </body>
 </html>
